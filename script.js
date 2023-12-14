@@ -10,10 +10,14 @@ const charsList = [
     "abcdefghijklmnopqrstuvwxyz".toUpperCase(),
     "`~!@#$%^&*()-_=+[{]}\|;:\"',<.>?/"
 ];
-const lengthLongestCharList = charsList.length;
 
 function getRandomNumber(minNumber, maxNumber) {
     return Math.floor((Math.random() * (maxNumber + 1)) + minNumber);
+}
+
+function getRandomChar() {
+    const selectedCharList = charsList[getRandomNumber(0, (charsList.length - 1))];
+    return selectedCharList[getRandomNumber(0, (selectedCharList.length - 1))];
 }
 
 function copyText() {
@@ -22,8 +26,6 @@ function copyText() {
 
 function generateText() {
     let generatedTextValue = "";
-    let chars = charsList[getRandomNumber(0, 3)];
-    let char = chars[getRandomNumber(0, charsList.length)];
     const maxGeneratedTextValue = fixedTypeRadio.checked ?
         parseInt(fixedValueInput.value) :
         getRandomNumber(
@@ -32,10 +34,7 @@ function generateText() {
         );
 
     while (generatedTextValue.length <= maxGeneratedTextValue) {
-        generatedTextValue += char;
-
-        chars = charsList[getRandomNumber(0, 3)];
-        char = chars[getRandomNumber(0, charsList.length)];
+        generatedTextValue += getRandomChar();
     }
 
     generatedTextInput.value = generatedTextValue;
