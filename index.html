@@ -12,12 +12,12 @@
         <section class="container mt-3">
             <h1 class="text-center mb-3">Random Text Generator</h1>
 
-            <form onsubmit="return generateText()">
+            <form id="textGeneratorForm">
                 <!-- Generated Text -->
                 <div class="d-flex flex-column align-items-center">
                     <div class="input-group">
                         <input type="text" class="form-control border border-3 border-dark" name="generatedText" id="generatedTextInput" readonly>
-                        <button type="button" class="btn btn-info text-light border border-3 border-dark" onclick="copyText()">Copy</button>
+                        <button type="button" class="btn btn-info text-light border border-3 border-dark" id="copyTextButton">Copy</button>
                     </div>
                     <button type="submit" class="btn btn-success mt-3 px-4 fs-5">Generate</button>
                 </div>
@@ -28,11 +28,11 @@
                     <div class="border border-3 border-dark">
                         <!-- Length Type Options -->
                         <div class="form-check m-2">
-                            <input class="form-check-input border border-3 border-dark" type="radio" name="lengthType" value="fixed" id="fixedTypeRadio" onchange="onLengthTypeSelected()" required checked>
+                            <input class="form-check-input border border-3 border-dark" type="radio" name="lengthType" value="fixed" id="fixedTypeRadio" required checked>
                             <label class="form-check-label" for="fixedTypeRadio">Fixed</label>
                         </div>
                         <div class="form-check m-2">
-                            <input class="form-check-input border border-3 border-dark" type="radio" name="lengthType" value="ranged" id="rangedTypeRadio" onchange="onLengthTypeSelected()" required>
+                            <input class="form-check-input border border-3 border-dark" type="radio" name="lengthType" value="ranged" id="rangedTypeRadio" required>
                             <label class="form-check-label" for="rangedTypeRadio">Ranged</label>
                         </div>
 

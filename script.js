@@ -1,4 +1,6 @@
+const textGeneratorForm = document.getElementById("textGeneratorForm");
 const generatedTextInput = document.getElementById("generatedTextInput");
+const copyTextButton = document.getElementById("copyTextButton");
 const rangedTypeRadio = document.getElementById("rangedTypeRadio");
 const startValueInput = document.getElementById("startValueInput");
 const endValueInput = document.getElementById("endValueInput");
@@ -10,6 +12,18 @@ const charsList = [
     "abcdefghijklmnopqrstuvwxyz".toUpperCase(),
     "`~!@#$%^&*()-_=+[{]}\|;:\"',<.>?/"
 ];
+
+addEventListeners();
+
+function addEventListeners() {
+    textGeneratorForm.addEventListener("submit", generateText);
+    textGeneratorForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+    });
+    copyTextButton.addEventListener("click", copyText);
+    fixedTypeRadio.addEventListener("click", updateValueInputStatus);
+    rangedTypeRadio.addEventListener("click", updateValueInputStatus);
+}
 
 function getRandomNumber(minNumber, maxNumber) {
     return Math.floor((Math.random() * (maxNumber + 1)) + minNumber);
@@ -38,11 +52,9 @@ function generateText() {
     }
 
     generatedTextInput.value = generatedTextValue;
-
-    return false;
 }
 
-function onLengthTypeSelected() {
+function updateValueInputStatus() {
     if (fixedTypeRadio.checked) {
         fixedValueInput.disabled = false;
         startValueInput.disabled = true;
